@@ -1,0 +1,26 @@
+<!--BackUp File-->
+<!DOCTYPE html>
+<div class="container">
+	<center>
+		<h3>CIR<a type="button" href="#/addCir" class="btn btn-primary btn-circle pull-right"><i class="glyphicon glyphicon-plus"></i></a></h3>
+		<div id="rowCount">
+			<table id="TableData" class="table responsive">
+				<tr>
+					<td>Container No</td>
+					<td>Size</td>
+					<td>CIR Type</td>
+				</tr>
+				<tr ng-repeat="cirContainer in cirContainerList">
+					<td><a href="#/containerFeet/{{cirContainer.containerNumber}}/{{cirContainer.sizeInFeet}}">{{cirContainer.containerNumber}}</a></td>
+					<td>{{cirContainer.isoSizeType}}</td>
+					<td>{{cirContainer.cirType}}</td>
+				</tr>
+			</table>
+		</div>
+		
+	 </center>
+	<div class="btn-group" role="group" aria-label="navButtons">
+		  <button type="button" class="btn btn-default">Previous</button>
+		  <button type="button" class="btn btn-default">Next</button>
+	</div>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <link rel="stylesheet" type="text/css" href="css/layout.css">
+        <title>CIR</title>
+		<!--css file for bootstrap-->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<!--angularJS file-->
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=medium-dpi, user-scalable=no" />
+	</head>
+	
+	<body ng-app="myApp">
+		<header>
+		   CIR
+		</header>
+		<div ng-view>
+		</div>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/angular/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular/angular-route.js"></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/kendo.all.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
+
+		<script type="text/javascript" src="js/cirRoute.js"></script>
+		<script type="text/javascript" src="js/viewData.js"></script>
+		<script type="text/javascript" src="js/containerSideLoader.js"></script>
+		<!-- <script type="text/javascript" src="js/areaCoordinates.js"></script> -->
+		<!--threejs files-->
+		<script type="text/javascript" src="js/three/three.js"></script>
+		<script type="text/javascript" src="js/three/Projector.js"></script>
+		<script type="text/javascript" src="js/three/CanvasRenderer.js"></script>
+		<script type="text/javascript" src="js/three/OrbitControls.js"></script>
+		<!--threejs files-->
+		<!-- <script type="text/javascript" src="js/threeDView.js"></script> -->
+
+		<!-- <script type="text/javascript" src="js/threeDViewLoadText.js"></script> -->
+		<script type="text/javascript" src="js/threeDView.js"></script>
+		<script type="text/javascript" src="js/addCIR.js"></script>
+		<script type="text/javascript" src="js/calculatedCIR.js"></script>
+
+		<!--START:	JS files for highlighting contaoner side-->
+		<!-- <script type="text/javascript" src="js/jquery-highLight.js"></script> -->
+		<!-- <script type="text/javascript" src="js/jquery.imagemapster.js"></script> -->
+		<!-- <script type="text/javascript" src="js/highlightHelper.js"></script> -->
+		<!--END:	JS files for highlighting contaoner side-->
+		<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css"> -->
+	</body>
+		<!-- <script type="text/javascript" src="js/login.js"></script> -->
+</html>		

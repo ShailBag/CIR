@@ -1,0 +1,38 @@
+<!--BackUp File-->
+<center>
+	<h3>New CIR</h3>
+</center>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="col-xs-6">
+			<label for="usr">CIR Date:</label>
+			<input ng-model="cirDateData" type="datetime-local" class="form-control">
+		</div>
+		<div class="col-xs-6">
+			<label for="usr">Container No:</label>
+			<input ng-model="containerNumberData" maxlength="11" type="text" class="form-control" placeholder="Container No" >
+		</div>
+	
+		<div class="col-xs-6">
+			<label for="usr">Operator:</label>
+			<!-- <input ng-model="cirOperator" type="text" class="form-control" placeholder="Operator" > -->
+			<select ng-model="cirOperatorData" class="form-control" id="cirOperator" ng-options="o for o in cirOperator"></select>
+		</div>
+		<div class="col-xs-6">
+			<label for="usr">ISO Sz/Ty:</label>
+			<!-- <input type="text" class="form-control" placeholder="Size" > -->
+			<select ng-model="isoSizeTypeData" class="form-control" id="SizeType" ng-options="sizeType for sizeType in isoSizeType"></select>
+		</div>
+		<div class="col-xs-6">
+			<label for="usr">CIR Type:</label>
+			<!-- <input type="select" class="form-control" placeholder="CIR Type" > -->
+			<select ng-model="cirTypeData" class="form-control" id="cirType" ng-options="cir for cir in cirType"></select>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group" role="group" aria-label="navButtons">
+		  <a class="btn btn-default" href="#/viewData">Back</a>
+		  <a class="btn btn-primary" ng-click="save()">Submit</a>
+		</div>
+	</div>
+</div>
