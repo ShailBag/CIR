@@ -1,8 +1,3 @@
-//BackUp File
-// function addCIR(){
-		// window.location="addCIR.html";
-// }
-
 app.controller("viewDataController",["$scope","viewDataFactory", function($scope,viewDataFactory) {
 	screen.orientation.lock('portrait');
 	$('header').show();
@@ -10,6 +5,10 @@ app.controller("viewDataController",["$scope","viewDataFactory", function($scope
 }]);
 
 app.factory("viewDataFactory",["$rootScope", "$http", "$q",function($rootScope, $http, $q){
+	//3D Canvas height and width
+	this.windowHeight = window.innerHeight;
+	this.windowWidth = window.innerWidth;
+		
 	//here list of container will be displayed when user is connected
 	this.cirContainerList=[
 		 { containerNumber:'ABC1234567',isoSizeType:'20G0',signal:'GREEN', 	operator:'MSK/Mearsk'		, 	cirType:'Box', 	sizeInFeet:20}

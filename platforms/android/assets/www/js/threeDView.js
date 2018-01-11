@@ -1,3 +1,29 @@
+app.controller("threeDController",["$scope","viewDataFactory", function($scope,viewDataFactory) {
+	// if(screen.orientation.type=="portrait-primary"||screen.orientation.type=="portrait-secondary"){
+		// alert("Rotate your Screen to Landscape!");
+		// location.reload();
+	// }
+	//screen.orientation.lock('landscape');
+	$scope.currentContainerNumber=(window.location.hash.substr(1)).split('/')[2];
+	var containerListLength=viewDataFactory.cirContainerList.length;
+	for(var i=0;i<containerListLength;i++){
+		if(viewDataFactory.cirContainerList[i].containerNumber==$scope.currentContainerNumber){
+			$scope.currentSizeType=viewDataFactory.cirContainerList[i].isoSizeType;
+		}
+	}
+	screen.orientation.lock('portrait');
+	$('header').show();
+	
+	angular.element(document).ready(function () {
+		if(screen.orientation.type=="portrait-primary"||screen.orientation.type=="portrait-secondary"||screen.orientation.type=="portrait"){
+			init($scope.currentContainerNumber,viewDataFactory.windowHeight,viewDataFactory.windowWidth);//,viewDataFactory.windowHeight,viewDataFactory.windowWidth
+		}
+    });
+	
+	console.log('threeDController');
+	
+}]);
+
 //will open camera to take picture of container
 // function cameraTakePicture(sideOfContainer) {
 	// var containerSideId=sideOfContainer.id;
@@ -17,9 +43,6 @@
 		// alert('Failed because: ' + message); 
 	// } 
 // }
-
-var containerSize = '22G0'//$('#ISOSizeType').val();
-var twentyORForty = containerSize.charAt(0);
 var screenpct = .95;
 var container, camera, scene, renderer, raycaster, mouse, cube, positionInfo, getHeight,containerSizeNumber;
 var objects = [];
@@ -50,7 +73,7 @@ var currentContainerGlobal;//do not remove this set container number in link to 
 //init();
 animate();
 
-function init(currentContainer) {
+function init(currentContainer,_height,_width) {//,_height,_width
 	//screen.orientation.lock('portrait');
 	currentContainerGlobal=currentContainer;
 	var geometry, materials;
@@ -58,9 +81,18 @@ function init(currentContainer) {
 	var slashPosition=urlStr.lastIndexOf('/');
 	containerSizeNumber=parseInt(urlStr.substring(slashPosition+1));
 	container = document.getElementById('Three_D_Container');
-	debugger;
-    camera = new THREE.PerspectiveCamera(70, window.innerWidth / (window.innerHeight-140), 0.1, 1000);//(70, window.innerWidth / window.innerHeight, 0.1, 10000)
+	var windowHeight = _height;//window.innerHeight;
+	var windowWidth = _width;//window.innerWidth;
+	// debugger;
+	if(windowWidth > windowHeight){
+			var temp = windowHeight;
+			windowHeight = 	windowWidth;
+			windowWidth = temp;
+	}
+	
+    camera = new THREE.PerspectiveCamera(70, windowWidth / (windowHeight-140), 0.1, 1000);//(70, window.innerWidth / window.innerHeight, 0.1, 10000)
     //  camera.position.set(300, 220, 500);
+	
     scene = new THREE.Scene();
 
     if (containerSizeNumber == 20) {
@@ -110,14 +142,15 @@ function init(currentContainer) {
     renderer.setClearColor(0xf0f0f0);
     //renderer.setPixelRatio(window.devicePixelRatio);
 
-    renderer.setSize(window.innerWidth, (window.innerHeight-140));
+    renderer.setSize(windowWidth, (windowHeight-140));
     container.appendChild(renderer.domElement);
     //document.onclick = onDocumentMouseDown;
 
     var orbit = new THREE.OrbitControls(camera, renderer.domElement);
     $("canvas").attr("id", "canvasContainer");
     //to assign width to div with id: canvasContainer
-    var widthForCanvasContainer = document.getElementsByClassName('panel-body')[0].offsetWidth - 20;
+    // var widthForCanvasContainer = document.getElementsByClassName('panel-body')[0].offsetWidth - 20;
+    var widthForCanvasContainer = windowWidth -30;
     document.getElementById('canvasContainer').style.width = widthForCanvasContainer + "px";
 
     camera.position.copy(orbit.target).add(new THREE.Vector4(300, 220, 500 + 10));
