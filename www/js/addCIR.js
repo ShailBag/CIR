@@ -19,6 +19,7 @@ app.controller("addCIRController",["$scope","viewDataFactory", function($scope,v
 		,'SEA/SEACO'	
 		,'TE1/TESTREPAIR'
 	];
+	//test
 	//to save cir data manually in database
 	$scope.save=function(){
 		var containerSize=parseInt($scope.isoSizeTypeData.substr(0,2));
